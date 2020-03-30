@@ -10,9 +10,6 @@ const passportSetup = require('./config/passport-setup');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 const app = express();
 
 // view engine setup
@@ -36,8 +33,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
+
+// connect to mongodb
+mongoose.connect(keys.mongodb.dbURI, () => {
+  console.log('connected to mongodb');
+});
+
+// create home route
+app.get('/', (req, res) => {
+  res.render('home');
+});
+
+// set up routes
+
+app.use('/auth', authRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
