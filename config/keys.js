@@ -6,10 +6,10 @@ module.exports = {
             clientSecret: '***********************88'
         },
         mongodb: {
-            dbURI: 'mongodb+srv://sajidkhaki:password@cluster0-m9bee.mongodb.net/test?retryWrites=true&w=majority'
+            dbURI: 'mongodb+srv://sajidkhaki:password@*******-m9bee.mongodb.net/*******?retryWrites=true&w=majority'
 
         },
         session: {
-            cookieKey: 'sajidashrafkhaki.firebaseapp.com/'
+            cookieKey: '#########.firebaseapp.com/'
         }
 };
